@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { createMoreProperties } from '@/data/properties';
+import { EXTRA_PROPERTIES } from '@/data/properties';   // ✅ use the existing export
 
 export interface Property {
   id: string;
@@ -222,8 +222,7 @@ export const PropertyProvider: React.FC<PropertyProviderProps> = ({ children }) 
       const generated = [
         ...baseProperties,
         ...generateSampleProperties(20),
-        ...createMoreProperties(100, 30),
-        ...createMoreProperties(1000, 50)
+        ...EXTRA_PROPERTIES,   // ✅ added extra seeding here
       ];
       setProperties(generated);
       localStorage.setItem('properties', JSON.stringify(generated));
